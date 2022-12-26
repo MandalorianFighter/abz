@@ -15,7 +15,18 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('full_name');
+            $table->date('hire_date');
+            $table->string('phone');
+            $table->string('email');
+            $table->float('salary');
+            $table->integer('position_id');
+            $table->integer('manager_id')->nullable();
+            $table->integer('level');
+            $table->string('photo')->nullable();
             $table->timestamps();
+            $table->integer('admin_created_id');
+            $table->integer('admin_updated_id');
         });
     }
 

@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
+            $table->string('position');
             $table->timestamps();
+            $table->integer('admin_created_id');
+            $table->integer('admin_updated_id');
         });
     }
 
