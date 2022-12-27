@@ -19,9 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/employees', [App\Http\Controllers\HomeController::class, 'index'])->name('employee');
 
-Route::get('/employees', [App\Http\Controllers\EmployeeController::class, 'index'])->name('employee');
 Route::get('/employees/add', [App\Http\Controllers\EmployeeController::class, 'add'])->name('employee.add');
 Route::post('/employees/store', [App\Http\Controllers\EmployeeController::class, 'store'])->name('employee.store');
 

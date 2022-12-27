@@ -20,15 +20,6 @@ class EmployeeController extends Controller
     {
         $this->middleware('auth');
     }
-    
-    public function index()
-    {
-        $positions = Position::orderBy('id', 'asc')->cursor();
-
-        $employees = Employee::withOnly('position')->orderBy('id', 'asc')->paginate(100);
-
-        return view('backend.datatable', compact('positions', 'employees'));
-    }
 
     public function add()
     {    
