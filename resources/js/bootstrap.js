@@ -9,6 +9,8 @@ window.$ = $;
 import select2 from 'select2';
 select2();
 
+import Inputmask from 'inputmask';
+
 $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": true, "autoWidth": true,
@@ -24,6 +26,67 @@ $(function () {
       "responsive": true,
     });
   });
+
+  $('#inputLevel').select2({
+    placeholder: 'Select Level'
+});
+
+$('#inputManager').select2({
+    placeholder: 'Select Manager'
+});
+
+
+$('#inputPosition').select2({
+    placeholder: 'Select Position',
+    ajax: {
+        url: '/positions/search',
+        dataType: 'json',
+processResults: function (data) {
+  return {
+    results:  $.map(data, function (item) {
+          return {
+              text: item.position,
+              id: item.id
+          }
+      })
+  };
+},
+cache: true
+}
+});
+
+$(document).on('change','#inputLevel', function () {
+
+var level = $(this).val();
+
+$('#inputManager').select2({
+    placeholder: 'Select Manager',
+    ajax: {
+        url: '/managers/search',
+        dataType: 'json',
+        data: {'level': level},
+processResults: function (data) {
+  return {
+    results:  $.map(data, function (item) {
+          return {
+              text: item.full_name,
+              id: item.id
+          }
+      })
+  };
+},
+cache: true
+}
+});
+});
+
+//Initialize Select2 Elements
+$('.select2bs4').select2({
+theme: 'bootstrap4'
+});
+
+Inputmask('dd.mm.yy', { 'placeholder': 'dd.mm.yy' }).mask('#inputDate');
+Inputmask().mask('[data-mask]');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

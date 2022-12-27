@@ -49,70 +49,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
-<script type="text/javascript">
-$('#inputLevel').select2({
-        placeholder: 'Select Level'
-});
-
-$('#inputManager').select2({
-        placeholder: 'Select Manager'
-});
-
-
-$('#inputPosition').select2({
-        placeholder: 'Select Position',
-        ajax: {
-            url: '/positions/search',
-            dataType: 'json',
-    processResults: function (data) {
-      return {
-        results:  $.map(data, function (item) {
-              return {
-                  text: item.position,
-                  id: item.id
-              }
-          })
-      };
-    },
-    cache: true
-  }
-});
-
-$(document).on('change','#inputLevel', function () {
-
-var level = $(this).val();
-
-$('#inputManager').select2({
-        placeholder: 'Select Manager',
-        ajax: {
-            url: '/managers/search',
-            dataType: 'json',
-            data: {'level': level},
-    processResults: function (data) {
-      return {
-        results:  $.map(data, function (item) {
-              return {
-                  text: item.full_name,
-                  id: item.id
-              }
-          })
-      };
-    },
-    cache: true
-  }
-});
-});
-
-//Initialize Select2 Elements
-$('.select2bs4').select2({
-  theme: 'bootstrap4'
-})
-
-//Datemask 
-$('#inputDate').inputmask('dd.mm.yy', { 'placeholder': 'dd.mm.yy' })
-$('[data-mask]').inputmask()
-</script>
 <script>
 @if(Session::has('message'))
 var type = "{{ Session::get('alert-type', 'info') }}"
@@ -132,7 +68,6 @@ switch(type) {
     case 'error':
     toastr.error(" {{ Session::get('message') }} ");
     break;
-
 }
 @endif
 </script>
