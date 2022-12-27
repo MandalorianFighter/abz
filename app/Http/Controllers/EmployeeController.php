@@ -85,12 +85,7 @@ class EmployeeController extends Controller
             'admin_updated_id' => auth()->user()->id,
         ]);
 
-        $notification = array(
-            'message' => 'Employee Is Inserted Successfully!',
-            'alert-type' => 'success',
-        );
-
-        return Redirect()->route('employee')->with($notification);
+        return Redirect()->route('employee');
     }
 
     public function edit($id)
@@ -138,12 +133,7 @@ class EmployeeController extends Controller
             'admin_updated_id' => auth()->user()->id,
         ]);
 
-        $notification = array(
-            'message' => 'Employee Is Updated Successfully!',
-            'alert-type' => 'info',
-        );
-
-        return Redirect()->route('employee')->with($notification);
+        return Redirect()->route('employee');
     }
 
     public function delete($id)
@@ -164,12 +154,7 @@ class EmployeeController extends Controller
         
         $employee->delete();
 
-        $notification = array(
-            'message' => 'Employee Is Deleted Successfully!',
-            'alert-type' => 'warning',
-        );
-
-        return Redirect()->route('employee')->with($notification);
+        return Redirect()->route('employee');
     }
 
     protected function storePhoto(Request $request): string

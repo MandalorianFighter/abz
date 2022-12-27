@@ -10,7 +10,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>AdminLTE 3 | Starter</title>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
-  
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -49,27 +48,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-<script>
-@if(Session::has('message'))
-var type = "{{ Session::get('alert-type', 'info') }}"
-switch(type) {
-    case 'info':
-    toastr.info(" {{ Session::get('message') }} ");
-    break;
-
-    case 'success':
-    toastr.success(" {{ Session::get('message') }} ");
-    break;
-
-    case 'warning':
-    toastr.warning(" {{ Session::get('message') }} ");
-    break;
-
-    case 'error':
-    toastr.error(" {{ Session::get('message') }} ");
-    break;
-}
-@endif
-</script>
 </body>
 </html>

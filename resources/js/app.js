@@ -26,4 +26,4 @@ import 'admin-lte/plugins/datatables-buttons/js/buttons.colVis.min';
 import 'admin-lte/plugins/select2/js/select2.full';
 import 'admin-lte/plugins/inputmask/jquery.inputmask.min';
 
-import 'admin-lte/plugins/toastr/toastr.min';
+
