@@ -152,10 +152,10 @@ class EmployeeController extends Controller
     {
         $photo = $request->file('photo');
         $name = hexdec(uniqid()).'.jpg';
+        $path = 'images/employee/' . $name;
 
-        $image = Image::make($photo)->fit(300, 300)->orientate()->stream('jpg', 80);
-        Storage::disk('public')->put('image/employee/'.$name, $image, 'public');
+        Image::make($photo)->fit(300, 300)->orientate()->save($path, 80);
 
-        return 'storage/image/employee/'.$name;
+        return $path;
     }
 }

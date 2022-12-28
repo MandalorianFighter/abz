@@ -1,5 +1,7 @@
 import './bootstrap';
 
+import '../css/app.css';
+
 import 'admin-lte';
 
 import 'admin-lte/plugins/jquery/jquery.min';
